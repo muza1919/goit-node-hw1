@@ -13,7 +13,7 @@ const getContactById = async (contactId) => {
   const contacts = await listContacts();
   const contact = contacts.find((contact) => contact.id === contactId);
   if (!contact) {
-    throw new Error("Contact not found");
+    return null;
   }
   return contact;
 };
@@ -22,7 +22,7 @@ const removeContact = async (contactId) => {
   const contacts = await listContacts();
   const index = contacts.findIndex((contact) => contact.id === contactId);
   if (!index) {
-    throw new Error("Contact not found");
+    return null;
   }
   const [contact] = contacts.splice(index, 1);
 
